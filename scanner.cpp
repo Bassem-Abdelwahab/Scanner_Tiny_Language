@@ -1,11 +1,11 @@
 #include "scanner.h"
 
-const char tokenName[][20] = {"PLUS", "MINUS", "MULT", "DIV", "EQUAL", "LESSTHAN",
+char tokenName[][20] = {"PLUS", "MINUS", "MULT", "DIV", "EQUAL", "LESSTHAN",
                         "OPENBRACKET", "CLOSEBRACKET", "SEMICOLON",
                         "IF", "THEN", "ELSE", "END", "REPEAT", "UNTIL", "READ", "WRITE",
                         "ASSIGN", "OTHER", "NUMBER", "IDENTIFIER"};
 
-const char reserved[][RESERVED_SIZE] = {"if", "then", "else", "end", "repeat", "until", "read", "write"};
+char reserved[][RESERVED_SIZE] = {"if", "then", "else", "end", "repeat", "until", "read", "write"};
 
 //enum class wordState{I, E, R, T, U, W,
 //                     IF, EN, EL, RE, TH, UN, WR,
@@ -16,9 +16,9 @@ const char reserved[][RESERVED_SIZE] = {"if", "then", "else", "end", "repeat", "
 
 
                              // 0    1    2    3    4    5    6    7    8
-const char symbols[SYMBOLS_SIZE] = { '+', '-', '*', '/', '=', '<', '(', ')', ';'};
+char symbols[SYMBOLS_SIZE] = { '+', '-', '*', '/', '=', '<', '(', ')', ';'};
 
-const char whiteSpaces[] = { ' ', '\t', '\n', '\r', EOF, '\0'};
+char whiteSpaces[] = { ' ', '\t', '\n', '\r', '\0', EOF};
 
 
 bool is_digit(const char input)
@@ -110,7 +110,6 @@ states scanner::evaluate_current_state()
         if(nextChar=='{')
           {
             state = INCOMMMENT;
-            consume_character(false);
           }
         else if(nextChar==':')
           {
@@ -148,7 +147,6 @@ states scanner::evaluate_current_state()
 
     case INCOMMMENT:
         if(nextChar == '}') state= START;
-        consume_character(false);
     break;
 
     case INNUM:

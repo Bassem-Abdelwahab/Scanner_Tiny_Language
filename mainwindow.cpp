@@ -38,7 +38,7 @@ void MainWindow::on_browsePushButton_clicked()
   ui->filePathLineEdit->setText(
                      QFileDialog::getOpenFileName(
                      this,
-                     tr("Open Directory"),
+                     tr("Open File"),
                      ui->filePathLineEdit->text(),
                      tr("TINY files (*.tiny);;Text files (*.txt)")));
   viewOpenFile(ui->filePathLineEdit->text());
@@ -189,7 +189,8 @@ void MainWindow::on_actionAbout_triggered()
                      "Bassem Osama Farouk (1500400)\n"
                      "Khaled Shehab Shams Eldin (15X0031)\n"
                      "Ayman Mohamed Saad Eldin (14T0045)\n"
-                     "Assem AbdElMoniem Ibrahim (1205036)");
+                     "Assem AbdElMoniem Ibrahim (1205036)\n"
+                     "Kirollos Samir Asaad (1601023)");
 }
 
 void MainWindow::on_actionHow_to_use_triggered()
